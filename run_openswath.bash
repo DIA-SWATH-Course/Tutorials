@@ -1,4 +1,6 @@
-# start docker for the OpenSWATH, PyProphet and TRIC workflow
+# Start docker session for OpenSWATH library generation (openswath/openswath:0.1.0):
+# This starts a docker session named "osw_tutorial" and stores data
+# from the "DIA_Course" directory in a local "data" directory
 docker run --name osw_tutorial --rm -v /c/DIA_Course/:/data -i -t openswath/openswath:0.1.0
 
 cd /data/Tutorial4_OpenSWATH/
@@ -52,3 +54,6 @@ feature_alignment.py \
 --fdr_cutoff 0.05 \
 --max_fdr_quality -1 \
 --alignment_score 0.05
+
+# exit openswath docker image 
+exit 

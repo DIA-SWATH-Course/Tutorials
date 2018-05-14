@@ -1,3 +1,6 @@
+# Start docker session for DIA-Umpire (biocontainers/dia-umpire:latest):
+# This starts a docker session named "DIAUmpire_tutorial" and stores data
+# from the "DIA_Course" directory in a local "data" directory
 docker run --name DIAUmpire_tutorial --rm -v /c/DIA_Course/:/data -i -t biocontainers/dia-umpire:latest
 
 cd /data/Tutorial3_DIAUmpire/
@@ -13,6 +16,16 @@ java -jar -Xmx8G /home/biodocker/bin/DIA-Umpire/v2.1.2/DIA_Umpire_SE.jar collins
 # convert .mgf files to .mzXML files for database search 
 # remember: the '*' means that the conversion is performed for all files ending with '.mgf' 
 msconvert --mzXML *.mgf
+
+# exit DIA-Umpire docker image 
+exit 
+
+# Start docker session for TPP database search generation (biocontainers/tpp:latest):
+# This starts a docker session named "tpp_tutorial" and stores data
+# from the "DIA_Course" directory in a local "data" directory
+docker run --name tpp_tutorial --rm -v /c/DIA_Course/:/data -i -t biocontainers/tpp:latest
+
+cd /data/Tutorial3_DIAUmpire/
 
 # Sequence database search with comet
 # remember: the '*' means that we perform the comet search for all files starting with 'collinsb' and ending on '.mzXML'
@@ -31,7 +44,7 @@ Mayu.pl -A iProphet.pep.xml -C /data/Data/napedro_3mixed_human_yeast_ecoli_20140
 # perform manual inspection of Mayu output file to select an i-prophet probability cutoff for the next step
 
 # spectrast iRT normalization
-spectrast -cNSpecLib -cICID-QTOF -cf "Protein! ~ reverse_" -cP0.975302 -c_IRT/data/Data/irtkit.txt -c_IRR iProphet.pep.xml
+spectrast -cNSpecLib -cICID-QTOF -cf "Protein! ~ reverse_" -cP0.872298 -c_IRT/data/Data/irtkit.txt -c_IRR iProphet.pep.xml
 
 # spectrast consensus spectrum generation for each peptide sequence
 spectrast -cNSpecLib_cons -cICID-QTOF -cAC SpecLib.splib
@@ -39,9 +52,12 @@ spectrast -cNSpecLib_cons -cICID-QTOF -cAC SpecLib.splib
 # spectrast MRM transition list generation
 spectrast -cNSpecLib_pqp -cICID-QTOF -cM SpecLib_cons.splib
 
-# Start docker session for OpenSWATH library generation (grosenberger/openswath:latest):
+# exit TPP docker image 
+exit 
+
+# Start docker session for OpenSWATH library generation (openswath/openswath:0.1.0):
 # This starts a docker session named "osw_tutorial" and stores data
-# from the "DIACourse" directory in a local "data" directory
+# from the "DIA_Course" directory in a local "data" directory
 docker run --name osw_tutorial --rm -v /c/DIA_Course/:/data -i -t openswath/openswath:0.1.0
 
 cd /data/Tutorial1_Library/
@@ -60,3 +76,6 @@ TargetedFileConverter -in transitionlist_optimized_decoys.TraML -out transitionl
 
 # convert to csv for manual inspection
 TargetedFileConverter -in transitionlist_optimized_decoys.TraML -out transitionlist_optimized_decoys.tsv
+
+# exit openswath docker image 
+exit 

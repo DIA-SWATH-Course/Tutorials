@@ -1,3 +1,6 @@
+# Start docker session for TPP database search generation (biocontainers/tpp:latest):
+# This starts a docker session named "tpp_tutorial" and stores data
+# from the "DIA_Course" directory in a local "data" directory
 docker run --name tpp_tutorial --rm -v /c/DIA_Course/:/data -i -t biocontainers/tpp:latest
 
 cd /data/Tutorial1_Library/
@@ -26,9 +29,12 @@ spectrast -cNSpecLib_cons -cICID-QTOF -cAC SpecLib.splib
 # spectrast MRM transition list generation
 spectrast -cNSpecLib_pqp -cICID-QTOF -cM SpecLib_cons.splib
 
-# Start docker session for OpenSWATH library generation (grosenberger/openswath:latest):
+# exit TPP docker image 
+exit 
+
+# Start docker session for OpenSWATH library generation (openswath/openswath:0.1.0):
 # This starts a docker session named "osw_tutorial" and stores data
-# from the "DIACourse" directory in a local "data" directory
+# from the "DIA_Course" directory in a local "data" directory
 docker run --name osw_tutorial --rm -v /c/DIA_Course/:/data -i -t openswath/openswath:0.1.0
 
 cd /data/Tutorial1_Library/
@@ -47,3 +53,6 @@ TargetedFileConverter -in transitionlist_optimized_decoys.TraML -out transitionl
 
 # convert to csv for manual inspection
 TargetedFileConverter -in transitionlist_optimized_decoys.TraML -out transitionlist_optimized_decoys.tsv
+
+# exit openswath docker image
+exit 
