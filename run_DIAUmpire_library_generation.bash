@@ -60,7 +60,7 @@ exit
 # from the "DIA_Course" directory in a local "data" directory
 docker run --name osw_tutorial --rm -v /c/DIA_Course/:/data -i -t openswath/openswath:0.1.0
 
-cd /data/Tutorial1_Library/
+cd /data/Tutorial3_DIAUmpire/
 
 # Import from SpectraST MRM and convert to TraML
 TargetedFileConverter -in SpecLib_pqp.mrm -out transitionlist.TraML
