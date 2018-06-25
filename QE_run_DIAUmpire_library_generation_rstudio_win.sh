@@ -125,10 +125,10 @@ TargetedFileConverter \
 -out transitionlist_optimized_decoys.pqp \
 &>> Tutorial3_log.txt
 
-# convert to tsv for manual inspection
+# convert target library to tsv for manual inspection and Skyline usage
 # runtime ~1 min
 TargetedFileConverter \
--in transitionlist_optimized_decoys.TraML \
--out transitionlist_optimized_decoys.tsv \
+-in transitionlist_optimized.TraML \
+-out transitionlist_optimized.tsv \
 &>> Tutorial3_log.txt
 
