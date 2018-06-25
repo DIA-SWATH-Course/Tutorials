@@ -1,4 +1,4 @@
-# Change directory to the Tutorial1 folder for library generation
+# Change directory to the Tutorial3 folder for DIA-Umpire based library generation
 cd /c/DIA_Course/Tutorial3_DIAUmpire/
 
 # copy two DIA files to the DIA-Umpire tutorial folder
