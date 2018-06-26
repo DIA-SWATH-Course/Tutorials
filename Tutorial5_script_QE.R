@@ -68,8 +68,8 @@ MSstats.input <- convert4MSstats(data.transition)
 
 # save the workflow and the final output
 save(data.annotated, data.filtered, data.reduced, data.transition,
-     file = 'SWATH2stats_workflow_TTOF.Rdata')
-save(MSstats.input, file = 'MSstats_input_TTOF.Rdata')
+     file = 'SWATH2stats_workflow_QE.Rdata')
+save(MSstats.input, file = 'MSstats_input_QE.Rdata')
 
 
 ## MSstats
@@ -116,7 +116,7 @@ dataProcessPlots(
   which.Protein = "sp|P25738|MSYB_ECOLI",
   address = FALSE)
 
-save(data.processed, file = 'MSstats_processed_TTOF.Rdata')
+save(data.processed, file = 'MSstats_processed_QE.Rdata')
 
 # Group comparison
 # first check which groups we have defined
@@ -173,7 +173,7 @@ legend("topright",
 
 #write group comparison result in table
 write.table(result.GroupComparison$ComparisonResult,
-            file = "groupComparison_result_TTOF.tsv",
+            file = "groupComparison_result_QE.tsv",
             quote = FALSE,
             row.names = FALSE,
             sep = "\t")
@@ -186,7 +186,7 @@ quantification.result <-
 
 # write output in a file
 write.table(quantification.result, 
-            file = "quantification_result_TTOF.tsv",
+            file = "quantification_result_QE.tsv",
             quote = FALSE,
             row.names = FALSE,
             sep = "\t")
