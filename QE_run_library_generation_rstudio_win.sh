@@ -101,6 +101,6 @@ TargetedFileConverter \
 TargetedFileConverter \
 -in transitionlist_optimized.TraML \
 -out transitionlist_optimized.tsv \
-&>> Tutorial3_log.txt
+&>> Tutorial1_log.txt
 
 
