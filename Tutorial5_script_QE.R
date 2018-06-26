@@ -113,7 +113,7 @@ dataProcessPlots(
 dataProcessPlots(
   data.processed, 
   type = "Conditionplot",
-  which.Protein = "sp|P29745|PEPT_ECOLI",
+  which.Protein = "sp|P25738|MSYB_ECOLI",
   address = FALSE)
 
 save(data.processed, file = 'MSstats_processed_TTOF.Rdata')
